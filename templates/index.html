@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nairobi Fare Prediction</title>
+    <!-- Link the CSS File -->
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Add a logo or header image -->
+        <img src="static/images/nairobi_matatu.jpg" alt="Nairobi Fare Prediction" style="max-width: 100%; height: auto; border-radius: 8px;">
+
+        <h1>Nairobi Fare Prediction</h1>
+
+        <!-- Form Section -->
+        <form action="/predict" method="POST">
+            <input type="text" name="cab_type" placeholder="Cab Type (e.g., Nissan)" required>
+            <input type="text" name="destination" placeholder="Destination (e.g., Downtown)" required>
+            <input type="number" step="any" name="wind" placeholder="Wind (km/h)" required>
+            <input type="number" step="any" name="rain" placeholder="Rain (mm)" required>
+            <input type="number" step="any" name="distance" placeholder="Distance (km)" required>
+            <input type="number" step="any" name="humidity" placeholder="Humidity (%)" required>
+            <input type="number" step="any" name="temp" placeholder="Temperature (°C)" required>
+            <input type="number" step="any" name="clouds" placeholder="Cloud Cover (%)" required>
+            <button type="submit">Print Price</button>
+        </form>
+
+        <!-- Result Section -->
+        {% if predicted_price %}
+            <p class="result">Please Pay: {{ predicted_price }}</p>
+        {% endif %}
+
+        <!-- Error Section -->
+        {% if error %}
+            <p class="error">Error: {{ error }}</p>
+        {% endif %}
+
+        <footer>
+            <p>&copy; 2024 Cab Fare Prediction</p>
+        </footer>
+    </div>
+</body>
+</html>
